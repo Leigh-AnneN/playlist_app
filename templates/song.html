@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1>{{ song.title }}!</h1>
+  <p class="lead">&ndash; {{ song.artist }}</p>
+</div>
+
+<ul>
+  DISPLAY ALL OF THE PLAYLISTS THAT THIS SONG IS A PART OF
+  <!-- {% for song of songs %}
+  {{song.playlist.name}}
+  {% endfor %} -->
+</ul>
+
+{% endblock %}
+
+<div class="row pets-listing">
+
+  {% for pet in pets %}
+  <div class="col-3">
+    <img class="img-thumbnail" src="{{ pet.photo_url }}">
+    
+    {{ pet.name }}
+    {% if pet.available %} <b> is available!</b> {% endif %}
+    <a class="btn btn-sm btn-success" href="/{{pet.id}}">Edit</a>
+  </div>
+  {% else %}
+  <div class="col-12">No pets yet.</div>
+  {% endfor %}
