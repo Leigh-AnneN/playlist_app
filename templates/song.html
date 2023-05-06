@@ -7,25 +7,18 @@
   <p class="lead">&ndash; {{ song.artist }}</p>
 </div>
 
-<ul>
-  DISPLAY ALL OF THE PLAYLISTS THAT THIS SONG IS A PART OF
-  <!-- {% for song of songs %}
-  {{song.playlist.name}}
-  {% endfor %} -->
-</ul>
+  <!-- DISPLAY ALL OF THE PLAYLISTS THAT THIS SONG IS A PART OF -->
+<div>
+  <h3>Playlists that this song is on:</h3>
+  <ul>
+    {% for playlist in song.playlist_for_songs %}
+    <li>
+      <a href="/playlists/{{ playlist.id }}">{{ playlist.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
 
 {% endblock %}
 
-<div class="row pets-listing">
 
-  {% for pet in pets %}
-  <div class="col-3">
-    <img class="img-thumbnail" src="{{ pet.photo_url }}">
-    
-    {{ pet.name }}
-    {% if pet.available %} <b> is available!</b> {% endif %}
-    <a class="btn btn-sm btn-success" href="/{{pet.id}}">Edit</a>
-  </div>
-  {% else %}
-  <div class="col-12">No pets yet.</div>
-  {% endfor %}
